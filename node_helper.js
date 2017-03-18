@@ -6,6 +6,7 @@
  */
 
 const NodeHelper = require('node_helper');
+var async = require('async');
 const request = require('request');
 const cheerio = require("cheerio");
 
@@ -22,10 +23,12 @@ module.exports = NodeHelper.create({
   // Subclass socketNotificationReceived received.
   socketNotificationReceived: function(notification, payload) {
     if (notification === 'CONFIG') {
+		console.log('astro helper: config received');
 		var self = this;
 		this.config = payload;
 		self.retrieveAndUpdate();
 		setInterval(function() {
+			console.log("astro helper retrieveAndUpdate()");
 			self.retrieveAndUpdate();
 		}, this.config.updateInterval);
     }

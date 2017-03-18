@@ -11,11 +11,11 @@ Module.register('MMM-nasaastropic', {
     updateInterval: 6 * 60 * 60 * 1000,
     animationSpeed: 0,
 	header: 'NASA Astronomy Picture',
-	maxlongedge: 600
+	maxlongedge: 300
   },
 
     getStyles: function () {
-        return ["MMM-nasaastropic.css"];
+        return ["nasaastropic.css"];
     },  
   
   // Define start sequence
@@ -42,17 +42,18 @@ Module.register('MMM-nasaastropic', {
     header.appendChild(name);
 	wrapper.appendChild(header);
 	
-	var imgContainer = document.createElement('div');
-	imgContainer.style.width = 500;
-	imgContainer.style.height = 500;
-	imgContainer.style.background = gray;
-	wrapper.appendChild(imgContainer);
+	/*var imgContainer = document.createElement('div');
+	imgContainer.style.width = "500px";
+	imgContainer.style.height = "500px";
+	imgContainer.style.background = "gray";
+	//imgContainer.innerHTML = this.img_src;
+	wrapper.appendChild(imgContainer);*/
 
 	var img = document.createElement('img');
-	img.style.maxwidth = '100%';
-	img.style.height = 'auto';
+	img.style = "max-width: " + this.config.maxlongedge + "px; max-height: " + this.config.maxlongedge + "px";
 	img.src = this.img_src;
-	imgContainer.appendChild(img);
+	img.alt = this.img_src;
+	wrapper.appendChild(img);
 
 	return wrapper;
   },
