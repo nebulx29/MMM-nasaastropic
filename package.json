@@ -1,0 +1,24 @@
+{
+  "name": "MMM-nasaastropic",
+  "description": "Displays the NASA astronomy picture of the day",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebulx29/MMM-nasaastropic"
+  },
+  "keywords": [
+    "NASA",
+    "astronomy",
+    "picture of the day"
+	],
+  "author": "nebulx29",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/nebulx29/MMM-nasaastropic/issues"
+  },
+  "homepage": "https://github.com/nebulx29/MMM-nasaastropic",
+  "dependencies": {
+    "request": "latest",
+	"cheerio": "latest"
+  }
+
+}
