@@ -10,8 +10,7 @@ Module.register('MMM-nasaastropic', {
   defaults: {
     updateInterval: 6 * 60 * 60 * 1000,
     animationSpeed: 0,
-	header: 'NASA Astronomy Picture',
-	maxlongedge: 300
+    maxlongedge: 300
   },
 
     getStyles: function () {
@@ -22,6 +21,7 @@ Module.register('MMM-nasaastropic', {
   start: function() {
     Log.log('Starting module: ' + this.name);
     this.sendSocketNotification('CONFIG', this.config);
+    this.loaded = false;
   },
 
   socketNotificationReceived: function(notification, payload) {
@@ -29,6 +29,7 @@ Module.register('MMM-nasaastropic', {
     //Log.log(payload);
     if (notification === 'URL') {
 		this.img_src = payload;
+ 		this.loaded = true;
 		this.updateDom(this.config.animationSpeed);
     }
   },
@@ -36,11 +37,12 @@ Module.register('MMM-nasaastropic', {
   // Override dom generator.
   getDom: function() {
 	var wrapper = document.createElement('div');
-	var header = document.createElement("header");
-	var name = document.createElement("span");
-    name.innerHTML = "" + this.config.header;
-    header.appendChild(name);
-	wrapper.appendChild(header);
+	  
+	if (!this.loaded) {
+		wrapper.innerHTML = this.translate("LOADING");
+		wrapper.className = "dimmed light small";
+		return wrapper;
+	}
 	
 	/*var imgContainer = document.createElement('div');
 	imgContainer.style.width = "500px";
