@@ -10,8 +10,7 @@ Module.register('MMM-nasaastropic', {
   defaults: {
     updateInterval: 6 * 60 * 60 * 1000,
     animationSpeed: 0,
-	header: 'NASA Astronomy Picture',
-	maxlongedge: 300
+    maxlongedge: 300
   },
 
     getStyles: function () {
@@ -36,11 +35,6 @@ Module.register('MMM-nasaastropic', {
   // Override dom generator.
   getDom: function() {
 	var wrapper = document.createElement('div');
-	var header = document.createElement("header");
-	var name = document.createElement("span");
-    name.innerHTML = "" + this.config.header;
-    header.appendChild(name);
-	wrapper.appendChild(header);
 	
 	/*var imgContainer = document.createElement('div');
 	imgContainer.style.width = "500px";
