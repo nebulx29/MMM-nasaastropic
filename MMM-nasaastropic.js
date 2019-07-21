@@ -21,6 +21,7 @@ Module.register('MMM-nasaastropic', {
   start: function() {
     Log.log('Starting module: ' + this.name);
     this.sendSocketNotification('CONFIG', this.config);
+    this.loaded = false;
   },
 
   socketNotificationReceived: function(notification, payload) {
@@ -28,6 +29,7 @@ Module.register('MMM-nasaastropic', {
     //Log.log(payload);
     if (notification === 'URL') {
 		this.img_src = payload;
+ 		this.loaded = true;
 		this.updateDom(this.config.animationSpeed);
     }
   },
@@ -35,6 +37,12 @@ Module.register('MMM-nasaastropic', {
   // Override dom generator.
   getDom: function() {
 	var wrapper = document.createElement('div');
+	  
+	if (!this.loaded) {
+		wrapper.innerHTML = this.translate("LOADING");
+		wrapper.className = "dimmed light small";
+		return wrapper;
+	}
 	
 	/*var imgContainer = document.createElement('div');
 	imgContainer.style.width = "500px";
