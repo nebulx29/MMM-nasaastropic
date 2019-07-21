@@ -3,7 +3,7 @@ Magic Mirror Module displaying NASA's astronomy picture of the day
 
 ### Prerequisites
 
-- tested only on MagicMirror v2.0.0
+- tested only on MagicMirror v2.8.0
 
 
 ### Download and Installation 
